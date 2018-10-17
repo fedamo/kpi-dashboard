@@ -2,13 +2,21 @@ import * as React from "react";
 import { Grid, Responsive, Tab, Container } from "semantic-ui-react";
 
 import Plot from "react-plotly.js";
-
+import data1 from "./data1.json";
 const panes = [
-  { menuItem: "Conversion Rate", render: () => <Tab.Pane>Chart</Tab.Pane> },
   {
-    menuItem: "Tab 2",
+    menuItem: "Conversion Rate",
     render: () => (
       <Tab.Pane>
+        <Plot data={data1} />
+      </Tab.Pane>
+    )
+  },
+  {
+    menuItem: "Cost/Conversion",
+    render: () => (
+      <Tab.Pane>
+        {" "}
         <Plot
           data={[
             {
@@ -16,16 +24,19 @@ const panes = [
               y: [2, 6, 3],
               type: "scatter",
               mode: "lines+points",
-              marker: { color: "red" }
+              marker: { color: "blue" }
             },
-            { type: "bar", x: [1, 2, 3], y: [2, 5, 3] }
+            {
+              type: "bar",
+              x: [1, 2, 3],
+              y: [2, 5, 3],
+              marker: { color: "yellow" }
+            }
           ]}
-          layout={{ width: 320, height: 240, title: "A Fancy Plot" }}
         />
       </Tab.Pane>
     )
   },
-  { menuItem: "Cost/Conversion", render: () => <Tab.Pane>Chart</Tab.Pane> },
   { menuItem: "Clicks", render: () => <Tab.Pane>Chart</Tab.Pane> },
   { menuItem: "Impressions", render: () => <Tab.Pane>Chart</Tab.Pane> },
   { menuItem: "Cost", render: () => <Tab.Pane>Chart</Tab.Pane> },
