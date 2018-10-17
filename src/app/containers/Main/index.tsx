@@ -3,48 +3,53 @@ import { Grid, Responsive, Tab, Container } from "semantic-ui-react";
 
 import Plot from "react-plotly.js";
 import data1 from "./data1.json";
-const panes = [
+
+const TabMapper = [
   {
-    menuItem: "Conversion Rate",
-    render: () => (
-      <Tab.Pane>
-        <Plot data={data1} />
-      </Tab.Pane>
-    )
+    title: "Conversion Rate",
+    data: data1
   },
   {
-    menuItem: "Cost/Conversion",
-    render: () => (
-      <Tab.Pane>
-        {" "}
-        <Plot
-          data={[
-            {
-              x: [1, 2, 3],
-              y: [2, 6, 3],
-              type: "scatter",
-              mode: "lines+points",
-              marker: { color: "blue" }
-            },
-            {
-              type: "bar",
-              x: [1, 2, 3],
-              y: [2, 5, 3],
-              marker: { color: "yellow" }
-            }
-          ]}
-        />
-      </Tab.Pane>
-    )
+    title: "Cost/Conversion",
+    data: data1
   },
-  { menuItem: "Clicks", render: () => <Tab.Pane>Chart</Tab.Pane> },
-  { menuItem: "Impressions", render: () => <Tab.Pane>Chart</Tab.Pane> },
-  { menuItem: "Cost", render: () => <Tab.Pane>Chart</Tab.Pane> },
-  { menuItem: "Conversions", render: () => <Tab.Pane>Chart</Tab.Pane> },
-  { menuItem: "Sales Unit", render: () => <Tab.Pane>Chart</Tab.Pane> },
-  { menuItem: "Sales Revenue", render: () => <Tab.Pane>Chart</Tab.Pane> },
-  { menuItem: "Sales Orders", render: () => <Tab.Pane>Chart</Tab.Pane> }
+  {
+    title: "Clicks",
+    data: data1
+  },
+  {
+    title: "Impressions",
+    data: data1
+  },
+  {
+    title: "Cost",
+    data: data1
+  },
+  {
+    title: "Conversions",
+    data: data1
+  },
+  {
+    title: "Sales Unit",
+    data: data1
+  },
+  {
+    title: "Sales Revenue",
+    data: data1
+  }
 ];
+
+const panes = TabMapper.map(dataset => {
+  return {
+    menuItem: dataset.title,
+    render: () => (
+      <Tab.Pane>
+        <Plot data={dataset.data} />
+      </Tab.Pane>
+    )
+  };
+});
+
 const TestTabs = () => <Tab panes={panes} />;
 export class Main extends React.Component {
   componentDidMount() {}
