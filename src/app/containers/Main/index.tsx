@@ -44,7 +44,12 @@ const panes = TabMapper.map(dataset => {
     menuItem: dataset.title,
     render: () => (
       <Tab.Pane>
-        <Plot data={dataset.data} layout={{}} />
+        <Plot
+          style={{ width: "100%", height: "100vh" }}
+          data={dataset.data}
+          layout={{ autosize: true }}
+          useResizeHandler={true}
+        />
       </Tab.Pane>
     )
   };
@@ -55,17 +60,11 @@ export class Main extends React.Component {
   componentDidMount() {}
   render() {
     return (
-      <Grid style={{ height: "100vh" }} verticalAlign="top">
-        <Grid.Row columns={1} align="center" height="100vh">
+      <Grid verticalAlign="top">
+        <Grid.Row columns={1} align="center">
           <Grid.Column align="top">
-            <Container>
-              <TestTabs />
-            </Container>
+            <TestTabs />
           </Grid.Column>
-          {/* RIGHT Side  */}
-          <Responsive as={Grid.Column} {...Responsive.onlyComputer}>
-            <Grid.Row>{""}</Grid.Row>
-          </Responsive>
         </Grid.Row>
       </Grid>
     );
