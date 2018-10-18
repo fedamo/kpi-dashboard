@@ -341,6 +341,13 @@
   version "9.6.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.0.tgz#d3480ee666df9784b1001a1872a2f6ccefb6c2d7"
 
+"@types/react-plotly.js@^2.2.2":
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/@types/react-plotly.js/-/react-plotly.js-2.2.2.tgz#b9d98c6b6085f4ee8267b31d18b9c3a5cfabbc1e"
+  integrity sha512-SaOu2FoaCVg//F0tGlPSNNh4PUceuHRy8oR4t4akSOOz6PfXurNGHuY4OLJ5dEQEh9pWjUttRuPVXI5eg9a8Cg==
+  dependencies:
+    "@types/plotly.js" "*"
+    "@types/react" "*"
 "@types/react-router@^4.0.23":
   version "4.0.23"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.23.tgz#d0509dcbdb1c686aed8f3d5cb186f42e5fbe7c2a"

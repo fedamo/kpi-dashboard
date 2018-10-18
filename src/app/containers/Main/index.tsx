@@ -44,7 +44,7 @@ const panes = TabMapper.map(dataset => {
     menuItem: dataset.title,
     render: () => (
       <Tab.Pane>
-        <Plot data={dataset.data} />
+        <Plot data={dataset.data} layout={{}} />
       </Tab.Pane>
     )
   };

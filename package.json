@@ -47,6 +47,7 @@
     "@types/classnames": "^2.2.3",
     "@types/history": "^4.6.2",
     "@types/node": "^9.6.0",
+    "@types/react-plotly.js": "^2.2.2",
     "@types/react-router": "^4.0.23",
     "@types/semantic-ui": "^2.2.6",
     "@types/webpack": "^4.1.2",
