@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Grid, Responsive, Tab, Container, Table } from "semantic-ui-react";
-
 import Plot from "react-plotly.js";
 import data_conv_rate from "./data_conv_rate.json";
 import data_conversions from "./data_conversions.json";
@@ -8,7 +7,6 @@ import data_cost from "./data_cost.json";
 import data_impressions from "./data_impressions.json";
 import data_clicks from "./data_clicks.json";
 import data_cost_conv from "./data_cost_conv.json";
-
 import data_sales from "./data_sales.json";
 import data_units from "./data_units.json";
 import data_orders from "./data_orders.json";
@@ -65,7 +63,7 @@ var updatemenus = [
     direction: "down", 
     
   yanchor: "top",
-    x: 0.55,
+    x: 0.57,
     y: 1.05,
     bgcolor: '#FFFAFA',
     showactive: true,
@@ -166,34 +164,12 @@ const panes = TabMapper.map(dataset => {
         <Plot
           style={{ width: "100%", height: "100vh" }}
           data={dataset.data}
-          layout={{
+          layout={{autosize: true,
             title: dataset.title,
             annotations: legend_annotations,
             legend:{bordercolor:'#b2b2b2'},
             titlefont: {size: 26, color: '#7f7f7f'},
-            updatemenus: {active: -1,
- 
-              buttons: [
-                    {
-                  "args": ["visible", [true, false,"legendonly", false,"legendonly", false,"legendonly", false,"legendonly", false,"legendonly", false,"legendonly", false]], 
-                  "label": "Daily", 
-                  "method": "restyle"
-                }, 
-                {
-                  "args": ["visible", [false, true,false, "legendonly",false, "legendonly",false, "legendonly",false, "legendonly",false, "legendonly",false, "legendonly"]], 
-                  "label": "Monthly", 
-                  "method": "restyle"
-                }
-                ],
-                direction: "down", 
-                
-              yanchor: "top",
-                x: 0.55,
-                y: 1.05,
-                bgcolor: '#FFFAFA',
-                showactive: true,
-                visible: true
-            },
+            updatemenus: updatemenus,
             xaxis: { rangeselector: selectorOptions,
                       rangeslider: {},
             
