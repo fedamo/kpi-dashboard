@@ -246,48 +246,36 @@ const panes1 = TabMapper2.map(dataset => {
   };
 });
 
-const SelectedTab = ({ index }) => {
-  switch (index) {
-    case 0:
-      return (
-        <Tab
-          renderActiveOnly={true}
-          menu={{
-            secondary: true,
-            attached: true,
-            tabular: true,
-            pointing: true
-          }}
-          menuPosition="left"
-          panes={panes}
-        />
-      );
-    case 1:
-      return (
-        <Tab
-          renderActiveOnly={true}
-          menu={{
-            secondary: true,
-            attached: true,
-            tabular: true,
-            pointing: true
-          }}
-          menuPosition="left"
-          panes={panes1}
-        />
-      );
-    case 2:
-      return (
-        <Tab
-          renderActiveOnly={true}
-          menu={{ tabular: true, pointing: true }}
-          menuPosition="left"
-          panes={panes1}
-        />
-      );
-  }
-};
-
+const TabsArray = [
+  <Tab
+    renderActiveOnly={true}
+    menu={{
+      secondary: true,
+      attached: true,
+      tabular: true,
+      pointing: true
+    }}
+    menuPosition="left"
+    panes={panes}
+  />,
+  <Tab
+    renderActiveOnly={true}
+    menu={{
+      secondary: true,
+      attached: true,
+      tabular: true,
+      pointing: true
+    }}
+    menuPosition="left"
+    panes={panes1}
+  />,
+  <Tab
+    renderActiveOnly={true}
+    menu={{ tabular: true, pointing: true }}
+    menuPosition="left"
+    panes={panes1}
+  />
+];
 export class Main extends React.Component {
   state = {
     selectedIndex: 0
@@ -316,7 +304,7 @@ export class Main extends React.Component {
             </Dropdown.Menu>
           </Dropdown>
 
-          <SelectedTab index={this.state.selectedIndex} />
+          {TabsArray[this.state.selectedIndex]}
         </Grid.Column>
       </Grid>
     );
