@@ -1,21 +1,5 @@
 import * as React from "react";
-import { Component } from "react";
-import {
-  Grid,
-  Responsive,
-  Tab,
-  Container,
-  Table,
-  Icon,
-  Menu,
-  Header,
-  Divider,
-  Image,
-  Dropdown,
-  Sidebar,
-  Segment,
-  DropdownItem
-} from "semantic-ui-react";
+import { Grid, Tab, Dropdown } from "semantic-ui-react";
 import Plot from "react-plotly.js";
 import data_conv_rate from "./data_conv_rate.json";
 import data_conversions from "./data_conversions.json";
@@ -27,41 +11,7 @@ import data_sales from "./data_sales.json";
 import data_units from "./data_units.json";
 import data_orders from "./data_orders.json";
 import data_ntf from "./data_ntf.json";
-import { select } from "d3";
-import mylogo from "./nfpa logo.png";
 import data_bar from "./data_bar.json";
-
-var selectorOptions = {
-  buttons: [
-    {
-      step: "month",
-      stepmode: "backward",
-      count: 1,
-      label: "1m"
-    },
-    {
-      step: "month",
-      stepmode: "backward",
-      count: 6,
-      label: "6m"
-    },
-    {
-      step: "year",
-      stepmode: "todate",
-      count: 1,
-      label: "YTD"
-    },
-    {
-      step: "year",
-      stepmode: "backward",
-      count: 1,
-      label: "1y"
-    },
-    {
-      step: "all"
-    }
-  ]
-};
 
 var updatemenus = [
   {
@@ -194,44 +144,12 @@ const TabMapper = [
   }
 ];
 
-var legend_annotations = [
-  {
-    x: 1.007,
-    y: 1.035,
-    align: "right",
-    valign: "top",
-    text: "Affiliate Code Groups",
-    showarrow: false,
-    xref: "paper",
-    yref: "paper",
-    xanchor: "center",
-    yanchor: "top",
-    font: { size: 12 }
-  }
-];
-
 const TabMapper2 = [
   {
     title: "Product Groups",
     data: data_bar,
     x: "Sales ($)",
     y: "Product Groups"
-  }
-];
-
-var legend_annotations = [
-  {
-    x: 1.007,
-    y: 1.035,
-    align: "right",
-    valign: "top",
-    text: "Affiliate Code Groups",
-    showarrow: false,
-    xref: "paper",
-    yref: "paper",
-    xanchor: "center",
-    yanchor: "top",
-    font: { size: 12 }
   }
 ];
 
@@ -328,49 +246,49 @@ const panes1 = TabMapper2.map(dataset => {
   };
 });
 
-const TestTabs = () => (
-  <Tab
-    renderActiveOnly={true}
-    menu={{ secondary: true, attached: true, tabular: true, pointing: true }}
-    menuPosition="left"
-    panes={panes}
-  />
-);
-const TestTabs1 = () => (
-  <Tab
-    renderActiveOnly={true}
-    menu={{ secondary: true, attached: true, tabular: true, pointing: true }}
-    menuPosition="left"
-    panes={panes1}
-  />
-);
-const TestTabs2 = () => (
-  <Tab
-    renderActiveOnly={true}
-    menu={{ tabular: true, pointing: true }}
-    menuPosition="left"
-    panes={panes1}
-  />
-);
-
 const SelectedTab = ({ index }) => {
   switch (index) {
     case 0:
-      return <TestTabs />;
+      return (
+        <Tab
+          renderActiveOnly={true}
+          menu={{
+            secondary: true,
+            attached: true,
+            tabular: true,
+            pointing: true
+          }}
+          menuPosition="left"
+          panes={panes}
+        />
+      );
     case 1:
-      return <TestTabs1 />;
+      return (
+        <Tab
+          renderActiveOnly={true}
+          menu={{
+            secondary: true,
+            attached: true,
+            tabular: true,
+            pointing: true
+          }}
+          menuPosition="left"
+          panes={panes1}
+        />
+      );
     case 2:
-      return <TestTabs2 />;
+      return (
+        <Tab
+          renderActiveOnly={true}
+          menu={{ tabular: true, pointing: true }}
+          menuPosition="left"
+          panes={panes1}
+        />
+      );
   }
 };
-const options = [
-  { key: 1, text: "KPI Trends", value: 1 },
-  { key: 2, text: "Product Attribution", value: 2 },
-  { key: 3, text: "Customer Insight", value: 3 }
-];
 
 export class Main extends React.Component {
-  // add component state
   state = {
     selectedIndex: 0
   };
@@ -380,19 +298,22 @@ export class Main extends React.Component {
     return (
       <Grid columns="equal">
         <Grid.Column>
-          <Dropdown
-            placeholder="Select Metrics"
-            fluid
-            selection
-            options={options}
-            onClick={() => this.setState({ selectedIndex: options.value })}
-          >
-            {/* <Dropdown.Menu   > */}
-            {/* <Dropdown.Header icon='tags' content='Select Metrics' /> */}
-            {/* <Dropdown.Item text = 'KPI Trends'  onClick={()=>this.setState({selectedIndex: 0})}></Dropdown.Item> */}
-            {/* <Dropdown.Item text = 'Product Attribution' onClick={()=>this.setState({selectedIndex: 1})}></Dropdown.Item> */}
-            {/* <Dropdown.Item text = 'Customer Insight' onClick={()=>this.setState({selectedIndex: 2})}></Dropdown.Item> */}
-            {/* </Dropdown.Menu> */}
+          <Dropdown placeholder="Select Metrics" fluid>
+            <Dropdown.Menu>
+              <Dropdown.Header icon="tags" content="Select Metrics" />
+              <Dropdown.Item
+                text="KPI Trends"
+                onClick={() => this.setState({ selectedIndex: 0 })}
+              />
+              <Dropdown.Item
+                text="Product Attribution"
+                onClick={() => this.setState({ selectedIndex: 1 })}
+              />
+              <Dropdown.Item
+                text="Customer Insight"
+                onClick={() => this.setState({ selectedIndex: 2 })}
+              />
+            </Dropdown.Menu>
           </Dropdown>
 
           <SelectedTab index={this.state.selectedIndex} />
