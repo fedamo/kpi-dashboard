@@ -3,69 +3,6 @@ import { Grid, Tab, Dropdown } from "semantic-ui-react";
 import Plot from "react-plotly.js";
 
 import Config from "../../config/uiconfig.js";
-var updatemenus = [
-  {
-    active: 0,
-
-    buttons: [
-      {
-        args: [
-          "visible",
-          [
-            true,
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false
-          ]
-        ],
-        label: "Daily",
-        method: "restyle"
-      },
-      {
-        args: [
-          "visible",
-          [
-            false,
-            true,
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly",
-            false,
-            "legendonly"
-          ]
-        ],
-        label: "Monthly",
-        method: "restyle"
-      }
-    ],
-    direction: "down",
-
-    yanchor: "top",
-    x: 0.056,
-    y: 1.13,
-    bgcolor: "#FFFAFA",
-    font: { size: 12, align: "left" },
-    showactive: true,
-    visible: true
-  }
-];
 
 const panes = Config.tabData.map(dataset => {
   return {

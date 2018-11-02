@@ -11,6 +11,69 @@ import data_ntf from '../data/data_ntf.json';
 import data_bar from '../data/data_bar.json';
 
 export default {
+  updateMenus: [
+    {
+      active: 0,
+
+      buttons: [
+        {
+          args: [
+            'visible',
+            [
+              true,
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false
+            ]
+          ],
+          label: 'Daily',
+          method: 'restyle'
+        },
+        {
+          args: [
+            'visible',
+            [
+              false,
+              true,
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly',
+              false,
+              'legendonly'
+            ]
+          ],
+          label: 'Monthly',
+          method: 'restyle'
+        }
+      ],
+      direction: 'down',
+
+      yanchor: 'top',
+      x: 0.056,
+      y: 1.13,
+      bgcolor: '#FFFAFA',
+      font: { size: 12, align: 'left' },
+      showactive: true,
+      visible: true
+    }
+  ],
   tabData2: [
     {
       title: 'Product Groups',
