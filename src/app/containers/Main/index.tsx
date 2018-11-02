@@ -1,18 +1,8 @@
 import * as React from "react";
 import { Grid, Tab, Dropdown } from "semantic-ui-react";
 import Plot from "react-plotly.js";
-import data_conv_rate from "./data_conv_rate.json";
-import data_conversions from "./data_conversions.json";
-import data_cost from "./data_cost.json";
-import data_impressions from "./data_impressions.json";
-import data_clicks from "./data_clicks.json";
-import data_cost_conv from "./data_cost_conv.json";
-import data_sales from "./data_sales.json";
-import data_units from "./data_units.json";
-import data_orders from "./data_orders.json";
-import data_ntf from "./data_ntf.json";
-import data_bar from "./data_bar.json";
 
+import Config from "../../config/uiconfig.js";
 var updatemenus = [
   {
     active: 0,
@@ -77,83 +67,7 @@ var updatemenus = [
   }
 ];
 
-const TabMapper = [
-  {
-    title: "Sales: Revenue ($)",
-    data: data_sales,
-    x: "Date",
-    y: "Dollars ($)"
-  },
-  {
-    title: "Sales: Units",
-    data: data_units,
-    x: "Date",
-    y: " Units"
-  },
-
-  {
-    title: "Sales: Orders",
-    data: data_orders,
-    x: "Date",
-    y: "Orders"
-  },
-
-  {
-    title: "Clicks",
-    data: data_clicks,
-    x: "Date",
-    y: "Clicks"
-  },
-
-  {
-    title: "Impressions",
-    data: data_impressions,
-    x: "Date",
-    y: "Clicks"
-  },
-
-  {
-    title: "Conversions",
-    data: data_conversions,
-    x: "Date",
-    y: "Clicks"
-  },
-  {
-    title: "Conversion Rate (%)",
-    data: data_conv_rate,
-    x: "Date",
-    y: "Clicks"
-  },
-  {
-    title: "Cost",
-    data: data_cost,
-    x: "Date",
-    y: "Clicks"
-  },
-  {
-    title: "Cost per Conversions",
-    data: data_cost_conv,
-    x: "Date",
-    y: "Clicks"
-  },
-  {
-    title: "New to File",
-    data: data_ntf,
-    x: "Date",
-    y: "New to File"
-  }
-];
-
-const TabMapper2 = [
-  {
-    title: "Product Groups",
-    data: data_bar,
-    x: "Sales ($)",
-    y: "Product Groups"
-  }
-];
-
-const panes = TabMapper.map(dataset => {
+const panes = Config.tabData.map(dataset => {
   return {
     menuItem: { icon: "chart line", name: dataset.title },
     render: () => (
@@ -225,7 +139,7 @@ const panes = TabMapper.map(dataset => {
   };
 });
 
-const panes1 = TabMapper2.map(dataset => {
+const panes1 = Config.tabData2.map(dataset => {
   return {
     menuItem: { icon: "chart line", name: dataset.title },
     render: () => (
