@@ -17,7 +17,7 @@ const panes = Config.tabData.map(dataset => {
             title: dataset.title,
             legend: { bordercolor: "#b2b2b2" },
             titlefont: { size: 26, color: "#7f7f7f" },
-            updatemenus: updatemenus,
+            updatemenus: Config.updateMenus,
             xaxis: {
               rangeselector: {
                 buttons: [
@@ -127,6 +127,12 @@ const TabsArray = [
     panes={panes1}
   />
 ];
+const dropdownTitles = [
+  "KPI Trends",
+  "Product Attribution",
+  "Customer Insight"
+];
+
 export class Main extends React.Component {
   state = {
     selectedIndex: 0
@@ -140,18 +146,13 @@ export class Main extends React.Component {
           <Dropdown placeholder="Select Metrics" fluid>
             <Dropdown.Menu>
               <Dropdown.Header icon="tags" content="Select Metrics" />
-              <Dropdown.Item
-                text="KPI Trends"
-                onClick={() => this.setState({ selectedIndex: 0 })}
-              />
-              <Dropdown.Item
-                text="Product Attribution"
-                onClick={() => this.setState({ selectedIndex: 1 })}
-              />
-              <Dropdown.Item
-                text="Customer Insight"
-                onClick={() => this.setState({ selectedIndex: 2 })}
-              />
+              {dropdownTitles.map((title, index = 0) => (
+                <Dropdown.Item
+                  text={title}
+                  key={index}
+                  onClick={() => this.setState({ selectedIndex: index })}
+                />
+              ))}
             </Dropdown.Menu>
           </Dropdown>
 
