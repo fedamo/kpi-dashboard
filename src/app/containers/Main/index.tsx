@@ -4,11 +4,11 @@ import Plot from "react-plotly.js";
 
 import Config from "../../config/uiconfig.js";
 
-const panes = Config.tabData.map(dataset => {
+const panes = Config.tabData.map((dataset, index) => {
   return {
     menuItem: { icon: "chart line", name: dataset.title },
     render: () => (
-      <Tab.Pane>
+      <Tab.Pane key={index}>
         <Plot
           style={{ width: "100%", height: "90vh" }}
           data={dataset.data}
@@ -53,7 +53,6 @@ const panes = Config.tabData.map(dataset => {
               rangeslider: {
                 visible: true
               },
-              //title: dataset.x|| "X Axis Default",
               titlefont: {
                 family: "Courier New, monospace",
                 size: 18,
@@ -76,11 +75,11 @@ const panes = Config.tabData.map(dataset => {
   };
 });
 
-const panes1 = Config.tabData2.map(dataset => {
+const panes1 = Config.tabData2.map((dataset, index) => {
   return {
     menuItem: { icon: "chart line", name: dataset.title },
     render: () => (
-      <Tab.Pane>
+      <Tab.Pane key={index}>
         <Plot
           style={{ width: "100%", height: "90vh" }}
           data={dataset.data}
