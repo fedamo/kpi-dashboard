@@ -9,6 +9,7 @@ import data_units from '../data/data_units.json';
 import data_orders from '../data/data_orders.json';
 import data_ntf from '../data/data_ntf.json';
 import data_bar from '../data/data_bar.json';
+import data_bar_rev from '../data/data_bar_rev.json';
 
 export default {
   updateMenus: [
@@ -66,7 +67,7 @@ export default {
       direction: 'down',
 
       yanchor: 'top',
-      x: 0.056,
+      x: 0.049,
       y: 1.13,
       bgcolor: '#FFFAFA',
       font: { size: 12, align: 'left' },
@@ -76,10 +77,15 @@ export default {
   ],
   tabData2: [
     {
-      title: 'Product Groups',
+      title: 'Product Group Share (%)',
       data: data_bar,
+      x: 'Sales (%)',
+      y: 'Product Groups (%)'
+    },{
+      title: 'Product Group Revenue ($)',
+      data: data_bar_rev,
       x: 'Sales ($)',
-      y: 'Product Groups'
+      y: 'Product Groups ($)'
     }
   ],
   tabData: [
